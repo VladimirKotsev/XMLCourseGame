@@ -33,10 +33,7 @@ public class PlayerMovements : MonoBehaviour
 
         // Jump
         if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Debug.Log($"Trying to jump {velocity}");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
 
         velocity.y += gravity * Time.deltaTime;
 
