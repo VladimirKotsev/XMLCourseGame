@@ -42,31 +42,65 @@ public class ShootingScript : MonoBehaviour
 
     void Shoot()
     {
+        //RaycastHit hit;
+
+        //// Casts a ray from the center of the camera forward
+        //if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
+        //{
+        //    Debug.Log("Hit: " + hit.transform.name + " with tag: " + hit.transform.tag);
+
+        //    // Example: detect specific tags
+        //    if (hit.transform.CompareTag("Target"))
+        //    {
+        //        Debug.Log("Target hit! Points should be granted!");
+        //    }
+        //    //To be implemented!!!!
+        //    else if (hit.transform.CompareTag("Reward"))
+        //    {
+        //        Debug.Log("Undestructuble object hit! Points should be taken!");
+        //    }
+        //    //To be implemented!!!!!
+        //    else if (hit.transform.CompareTag("Other"))
+        //    {
+        //        Debug.Log("Target miseed! Points should be taken!");
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.Log("Missed!");
+        //}
         RaycastHit hit;
 
-        // Casts a ray from the center of the camera forward
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
         {
-            Debug.Log("Hit: " + hit.transform.name + " with tag: " + hit.transform.tag);
+            Debug.Log("Hit: " + hit.transform.name);
 
-            // Example: detect specific tags
+            // If the hit object has a Target component, deal damage
+            // Check tag types
             if (hit.transform.CompareTag("Target"))
             {
-                Debug.Log("Target hit! Points should be granted!");
+                if (hit.transform.TryGetComponent(out Target target))
+                    target.OnHit();
             }
-            //To be implemented!!!!
             else if (hit.transform.CompareTag("Reward"))
             {
-                Debug.Log("Undestructuble object hit! Points should be taken!");
+                // You have shot the target. Points should be taken!!!!
+                Debug.Log("Reward has beeen hit!");
             }
-            //To be implemented!!!!!
             else if (hit.transform.CompareTag("Other"))
             {
-                Debug.Log("Target miseed! Points should be taken!");
+                // You have missed your shot. Points should be taken!!!!!
+                Debug.Log("Hit object with Other tag.");
+            }
+            else
+            {
+                // In case we have more tags in the scene!!
+                Debug.Log("Hit object with unrecognized tag.");
             }
         }
         else
         {
+            // You have missed your shot. Points should be taken!!!!!
             Debug.Log("Missed!");
         }
     }

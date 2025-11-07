@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LinearTargetMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 7f;
     public float moveDistance = 100f; // how far it should move before turning back
 
     private Vector3 startPos;

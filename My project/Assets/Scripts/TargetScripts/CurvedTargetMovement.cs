@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CurvedTargetMovement : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    public float amplitude = 2.5f;
+    public float moveSpeed = 5f;
+    public float amplitude = 2.8f;
     public float frequency = 1.7f;
-    public float moveDistance = 50f;
+    public float moveDistance = 100f;
 
     public Vector3 moveDirection = Vector3.forward;
 
