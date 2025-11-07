@@ -3,13 +3,38 @@ using UnityEngine;
 public class ShootingScript : MonoBehaviour
 {
     public Camera playerCamera;
+    public Transform weaponHolder;
 
     public float range = 100f;
+
+    public float recoilAmount = 25f;
+    public float recoilReturnSpeed = 4f;
+    public float recoilKickback = 0.50f;
+
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+    private Vector3 targetPosition;
+    private Quaternion targetRotation;
+
+    void Start()
+    {
+        originalPosition = weaponHolder.localPosition;
+        originalRotation = weaponHolder.localRotation;
+    }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
+        {
+
             Shoot();
+            ApplyRecoil();
+
+        }
+
+        weaponHolder.localPosition = Vector3.Lerp(weaponHolder.localPosition, targetPosition, recoilReturnSpeed * Time.deltaTime);
+        weaponHolder.localRotation = Quaternion.Lerp(weaponHolder.localRotation, targetRotation, recoilReturnSpeed * Time.deltaTime);
+
     }
 
     void Shoot()
@@ -42,4 +67,22 @@ public class ShootingScript : MonoBehaviour
             Debug.Log("Missed!");
         }
     }
+    void ApplyRecoil()
+    {
+        float recoilX = Random.Range(-recoilAmount / 4, recoilAmount / 4);
+        float recoilY = Random.Range(-recoilAmount / 2, recoilAmount / 2);
+
+        targetRotation = originalRotation * Quaternion.Euler(-recoilAmount, recoilY, recoilX);
+
+        targetPosition = originalPosition - Vector3.forward * recoilKickback;
+
+        Invoke(nameof(ResetRecoil), 0.05f);
+    }
+
+    void ResetRecoil()
+    {
+        targetRotation = originalRotation;
+        targetPosition = originalPosition;
+    }
+
 }
