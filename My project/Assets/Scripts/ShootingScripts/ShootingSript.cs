@@ -20,6 +20,9 @@ public class ShootingScript : MonoBehaviour
     {
         originalPosition = weaponHolder.localPosition;
         originalRotation = weaponHolder.localRotation;
+
+        targetPosition = originalPosition;
+        targetRotation = originalRotation;
     }
 
     void Update()

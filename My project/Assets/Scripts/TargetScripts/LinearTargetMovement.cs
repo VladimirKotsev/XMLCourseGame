@@ -3,7 +3,7 @@ using UnityEngine;
 public class LinearTargetMovement : MonoBehaviour
 {
     public float speed = 5f;
-    public float moveDistance = 10f; // how far it should move before turning back
+    public float moveDistance = 100f; // how far it should move before turning back
 
     private Vector3 startPos;
     private bool movingForward = true;
@@ -17,9 +17,9 @@ public class LinearTargetMovement : MonoBehaviour
     {
         // Move in current direction
         if (movingForward)
-            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(transform.up * speed * Time.deltaTime, Space.World);
         else
-            transform.Translate(-transform.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(-transform.up * speed * Time.deltaTime, Space.World);
 
         // Check distance traveled
         float distanceFromStart = Vector3.Distance(startPos, transform.position);
