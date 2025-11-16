@@ -4,6 +4,7 @@ public class ShootingScript : MonoBehaviour
 {
     public Camera playerCamera;
     public Transform weaponHolder;
+    public GameObject muzzleFlash;
 
     public float range = 100f;
 
@@ -69,6 +70,11 @@ public class ShootingScript : MonoBehaviour
         //{
         //    Debug.Log("Missed!");
         //}
+
+        // Enable muzzle flash briefly
+        muzzleFlash.SetActive(true);
+        Invoke(nameof(DisableMuzzleFlash), 0.05f);
+
         RaycastHit hit;
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
@@ -114,6 +120,11 @@ public class ShootingScript : MonoBehaviour
         targetPosition = originalPosition - Vector3.forward * recoilKickback;
 
         Invoke(nameof(ResetRecoil), 0.05f);
+    }
+
+    void DisableMuzzleFlash()
+    {
+        muzzleFlash.SetActive(false);
     }
 
     void ResetRecoil()
