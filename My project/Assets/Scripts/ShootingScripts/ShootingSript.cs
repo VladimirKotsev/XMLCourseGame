@@ -8,11 +8,11 @@ public class ShootingScript : MonoBehaviour
     public Camera playerCamera;
     public Transform weaponHolder;
 
-    public float range = 100f;
+    //public float range = 100f;
 
-    public float recoilAmount = 25f;
-    public float recoilReturnSpeed = 4f;
-    public float recoilKickback = 0.50f;
+    //public float recoilAmount = 25f;
+    //public float recoilReturnSpeed = 4f;
+    //public float recoilKickback = 0.50f;
 
     private GunManager gunManager;
     private Vector3 originalPosition;
@@ -38,13 +38,18 @@ public class ShootingScript : MonoBehaviour
             ApplyRecoil();
         }
 
-        weaponHolder.localPosition = Vector3.Lerp(weaponHolder.localPosition, targetPosition, recoilReturnSpeed * Time.deltaTime);
-        weaponHolder.localRotation = Quaternion.Lerp(weaponHolder.localRotation, targetRotation, recoilReturnSpeed * Time.deltaTime);
+        weaponHolder.localPosition = Vector3.Lerp(weaponHolder.localPosition, targetPosition, CurrentGun().RecoilReturnSpeed * Time.deltaTime);
+        weaponHolder.localRotation = Quaternion.Lerp(weaponHolder.localRotation, targetRotation, CurrentGun().RecoilReturnSpeed * Time.deltaTime);
     }
 
     private GameObject MuzzleFlash()
     {
-        return this.gunManager.CurrentGun.MuzzleFlash;
+        return this.CurrentGun().MuzzleFlash;
+    }
+
+    private Gun CurrentGun()
+    {
+        return this.gunManager.CurrentGun;
     }
 
     void Shoot()
@@ -55,7 +60,7 @@ public class ShootingScript : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, CurrentGun().Range))
         {
             Debug.Log("Hit: " + hit.transform.name);
 
@@ -90,12 +95,12 @@ public class ShootingScript : MonoBehaviour
     }
     void ApplyRecoil()
     {
-        float recoilX = Random.Range(-recoilAmount / 4, recoilAmount / 4);
-        float recoilY = Random.Range(-recoilAmount / 2, recoilAmount / 2);
+        float recoilX = Random.Range(-CurrentGun().RecoilAmount / 4, CurrentGun().RecoilAmount / 4);
+        float recoilY = Random.Range(-CurrentGun().RecoilAmount / 2, CurrentGun().RecoilAmount / 2);
 
-        targetRotation = originalRotation * Quaternion.Euler(-recoilAmount, recoilY, recoilX);
+        targetRotation = originalRotation * Quaternion.Euler(-CurrentGun().RecoilAmount, recoilY, recoilX);
 
-        targetPosition = originalPosition - Vector3.forward * recoilKickback;
+        targetPosition = originalPosition - Vector3.forward * CurrentGun().RecoilKickback;
 
         Invoke(nameof(ResetRecoil), 0.05f);
     }
