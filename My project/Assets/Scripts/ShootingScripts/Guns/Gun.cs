@@ -8,15 +8,16 @@ public abstract class Gun
     public float Range { get; set; }
     public float RecoilAmount { get; set; }
     public float RecoilReturnSpeed { get; set; }
-
+    public float ShootingDelay { get; set; }
     public float RecoilKickback { get; set; }
     public bool CanZoom { get; set; }
 
-    public Gun(GameObject weapon, GameObject muzzleFlash, float range, float recoilAmount, float recoilReturnSpeed, float recoilKickback, bool canZoom)
+    public Gun(GameObject weapon, GameObject muzzleFlash, float range, float shootingDelay, float recoilAmount, float recoilReturnSpeed, float recoilKickback, bool canZoom)
     {
         MuzzleFlash = muzzleFlash;
         Weapon = weapon;
         Range = range;
+        ShootingDelay = shootingDelay;
         RecoilAmount = recoilAmount;
         RecoilReturnSpeed = recoilReturnSpeed;
         RecoilKickback = recoilKickback;

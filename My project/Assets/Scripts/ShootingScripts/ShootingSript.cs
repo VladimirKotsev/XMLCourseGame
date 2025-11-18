@@ -8,17 +8,12 @@ public class ShootingScript : MonoBehaviour
     public Camera playerCamera;
     public Transform weaponHolder;
 
-    //public float range = 100f;
-
-    //public float recoilAmount = 25f;
-    //public float recoilReturnSpeed = 4f;
-    //public float recoilKickback = 0.50f;
-
     private GunManager gunManager;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
+    private float nextShootTime = 0f;
 
     void Start()
     {
@@ -32,14 +27,26 @@ public class ShootingScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextShootTime)
         {
             Shoot();
             ApplyRecoil();
+            CurrentAnimator().SetTrigger("Shooting");
+
+            nextShootTime = Time.time + CurrentGun().ShootingDelay;
         }
 
-        weaponHolder.localPosition = Vector3.Lerp(weaponHolder.localPosition, targetPosition, CurrentGun().RecoilReturnSpeed * Time.deltaTime);
-        weaponHolder.localRotation = Quaternion.Lerp(weaponHolder.localRotation, targetRotation, CurrentGun().RecoilReturnSpeed * Time.deltaTime);
+        weaponHolder.localPosition = Vector3.Lerp(
+            weaponHolder.localPosition,
+            targetPosition,
+            CurrentGun().RecoilReturnSpeed * Time.deltaTime
+        );
+
+        weaponHolder.localRotation = Quaternion.Lerp(
+            weaponHolder.localRotation,
+            targetRotation,
+            CurrentGun().RecoilReturnSpeed * Time.deltaTime
+        );
     }
 
     private GameObject MuzzleFlash()
@@ -50,6 +57,11 @@ public class ShootingScript : MonoBehaviour
     private Gun CurrentGun()
     {
         return this.gunManager.CurrentGun;
+    }
+
+    private Animator CurrentAnimator()
+    {
+        return CurrentGun().Weapon.GetComponentInChildren<Animator>();
     }
 
     void Shoot()
