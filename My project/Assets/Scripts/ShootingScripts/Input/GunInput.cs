@@ -4,6 +4,7 @@ using UnityEngine;
 public class GunInput
 {
     public GameObject GameObject;
+    public GameObject muzzleFlash;
     public enum Type
     {
         Pistol,

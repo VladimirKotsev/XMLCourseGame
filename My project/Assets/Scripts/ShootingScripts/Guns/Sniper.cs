@@ -10,7 +10,7 @@ public class Sniper : Gun
     private const float RECOIL_KICKBACK = 1.50f;
     private const bool CAN_ZOOM = true;
 
-    public Sniper(GameObject weapon)
-        : base(weapon, RANGE, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
+    public Sniper(GameObject weapon, GameObject muzzleFlash)
+        : base(weapon, muzzleFlash, RANGE, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
 
 }

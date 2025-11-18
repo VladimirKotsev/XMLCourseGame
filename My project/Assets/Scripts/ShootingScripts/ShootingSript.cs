@@ -1,12 +1,12 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootingScript : MonoBehaviour
 {
     public Camera playerCamera;
     public Transform weaponHolder;
-    public GameObject muzzleFlash;
 
     public float range = 100f;
 
@@ -14,6 +14,7 @@ public class ShootingScript : MonoBehaviour
     public float recoilReturnSpeed = 4f;
     public float recoilKickback = 0.50f;
 
+    private GunManager gunManager;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private Vector3 targetPosition;
@@ -21,6 +22,7 @@ public class ShootingScript : MonoBehaviour
 
     void Start()
     {
+        gunManager = GameObject.FindGameObjectWithTag("Player").GetComponent<GunManager>();
         originalPosition = weaponHolder.localPosition;
         originalRotation = weaponHolder.localRotation;
 
@@ -40,10 +42,15 @@ public class ShootingScript : MonoBehaviour
         weaponHolder.localRotation = Quaternion.Lerp(weaponHolder.localRotation, targetRotation, recoilReturnSpeed * Time.deltaTime);
     }
 
+    private GameObject MuzzleFlash()
+    {
+        return this.gunManager.CurrentGun.MuzzleFlash;
+    }
+
     void Shoot()
     {
         // Enable muzzle flash briefly
-        muzzleFlash.SetActive(true);
+        MuzzleFlash().SetActive(true);
         Invoke(nameof(DisableMuzzleFlash), 0.05f);
 
         RaycastHit hit;
@@ -95,7 +102,7 @@ public class ShootingScript : MonoBehaviour
 
     void DisableMuzzleFlash()
     {
-        muzzleFlash.SetActive(false);
+        MuzzleFlash().SetActive(false);
     }
 
     void ResetRecoil()

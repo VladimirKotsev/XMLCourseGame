@@ -9,6 +9,6 @@ public class Shotgun : Gun
     private const float RECOIL_KICKBACK = 0.90f;
     private const bool CAN_ZOOM = false;
 
-    public Shotgun(GameObject weapon)
-        : base(weapon, RANGE, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
+    public Shotgun(GameObject weapon, GameObject muzzleFlash)
+        : base(weapon, muzzleFlash, RANGE, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
 }

@@ -1,31 +1,51 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-
-//Changes guns for the player
 public class GunManager : MonoBehaviour
 {
-    public List<GunInput> inputList;
-    public List<Gun> guns = new List<Gun>();
-    public Gun currentGun;
+    public List<GunInput> InputList;
+    public List<Gun> Guns = new List<Gun>();
+
+    private Gun currentGun;
+    public Gun CurrentGun {
+        get => currentGun;
+        set
+        {
+            if (currentGun == value) return;
+
+            currentGun = value;
+            DisableGuns();
+            currentGun.Weapon.SetActive(true);
+        }
+    }
+
 
     private void Awake()
     {
-        foreach (var inputItem in inputList)
+        foreach (var inputItem in InputList)
         {
             switch (inputItem.gunType)
             {
                 case GunInput.Type.Pistol:
-                    guns.Add(new Pistol(inputItem.GameObject));
+                    Guns.Add(new Pistol(inputItem.GameObject, inputItem.muzzleFlash));
                     break;
                 case GunInput.Type.Sniper:
-                    guns.Add(new Sniper(inputItem.GameObject));
+                    Guns.Add(new Sniper(inputItem.GameObject, inputItem.muzzleFlash));
                     break;
                 case GunInput.Type.Shotgun:
-                    guns.Add(new Shotgun(inputItem.GameObject));
+                    Guns.Add(new Shotgun(inputItem.GameObject, inputItem.muzzleFlash));
                     break;
             }
         }
-        this.currentGun = this.guns[0];
+        this.CurrentGun = this.Guns[2];
+    }
+
+    private void DisableGuns()
+    {
+        foreach(var gun in this.Guns.Where(x => x != currentGun))
+        {
+            gun.Weapon.SetActive(false);
+        }
     }
 }
