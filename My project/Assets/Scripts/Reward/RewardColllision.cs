@@ -3,6 +3,8 @@ using UnityEngine;
 public class RewardColllision : MonoBehaviour
 {
     private UIManager uiManager;
+    private bool playerNearInteractable = false;
+
     void Start()
     {
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
@@ -12,6 +14,7 @@ public class RewardColllision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            playerNearInteractable = true;
             uiManager.State = UIState.NearInteractable;
         }
     }
@@ -20,7 +23,19 @@ public class RewardColllision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            playerNearInteractable = false;
             uiManager.State = UIState.Crosshair;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerNearInteractable && uiManager.State == UIState.NearInteractable)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                uiManager.State = UIState.Interacting;
+            }
         }
     }
 }

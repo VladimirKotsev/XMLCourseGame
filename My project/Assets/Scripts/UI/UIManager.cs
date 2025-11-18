@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<UIState, GameObject> stateDictionary;
     public List<UIStateElementPair> stateUIElementsPairs;
+    // TODO: Pass last message
 
     private void Awake()
     {
