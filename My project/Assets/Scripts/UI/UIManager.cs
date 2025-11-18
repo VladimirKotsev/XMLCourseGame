@@ -1,17 +1,43 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-// TODO - Add UI manager logic
 public class UIManager : MonoBehaviour
 {
     private UIState state;
-
-    void Start()
+    public UIState State
     {
-        this.state = UIState.Crosshair;
+        get => state;
+        set
+        {
+            if (state == value) return;
+
+            state = value;
+            UpdateUI();
+        }
     }
 
-    void Update()
+    private Dictionary<UIState, GameObject> stateDictionary;
+    public List<UIStateElementPair> stateUIElementsPairs;
+
+    private void Awake()
     {
-        
+        stateDictionary = new Dictionary<UIState, GameObject>();
+
+        foreach (var pair in stateUIElementsPairs)
+        {
+            if (!stateDictionary.ContainsKey(pair.state))
+                stateDictionary.Add(pair.state, pair.uiElement);
+        }
+    }
+
+    private void Start()
+    {
+        State = UIState.Crosshair;
+    }
+
+    private void UpdateUI()
+    {
+        foreach (var kvp in stateDictionary)
+            kvp.Value.SetActive(kvp.Key == State);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5297061599030391198}
   - component: {fileID: 8272130375674437072}
   - component: {fileID: 2277789818314234601}
+  - component: {fileID: 2997726793255238106}
   m_Layer: 0
   m_Name: RewardBoxPrefab
   m_TagString: Untagged
@@ -49,11 +50,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.27, y: 1.04, z: 1}
+  m_Size: {x: 7, y: 7, z: 1}
   m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!54 &2277789818314234601
 Rigidbody:
@@ -82,6 +83,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2997726793255238106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933049745015090563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fef549f525cab42b6550e3b362ab06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RewardColllision
 --- !u!1001 &6606138478782754033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,8 +166,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7e6c1e6079e0124d9e5ae6bbc4c30b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8228278642500131936}
   m_SourcePrefab: {fileID: 100100000, guid: e7e6c1e6079e0124d9e5ae6bbc4c30b3, type: 3}
+--- !u!1 &6299654224731935136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e7e6c1e6079e0124d9e5ae6bbc4c30b3, type: 3}
+  m_PrefabInstance: {fileID: 6606138478782754033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8228278642500131936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299654224731935136}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.60157233, y: 0.6001845, z: 0.70008314}
+  m_Center: {x: 0.014361747, y: -0.0045124157, z: 0.3500984}
 --- !u!4 &6640292184708860698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e7e6c1e6079e0124d9e5ae6bbc4c30b3, type: 3}
