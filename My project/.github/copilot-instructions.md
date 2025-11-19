@@ -2,7 +2,7 @@
 - Project name: My project
 - Unity version: Unity 6000.2.10f1
 - Active game object:
-  - Name: arms@talon
-  - Tag: GunModel
+  - Name: EventSystem
+  - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
