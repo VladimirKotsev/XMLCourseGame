@@ -8,6 +8,7 @@ TagManager:
   - Other
   - UIManager
   - GunModel
+  - Ground
   layers:
   - Default
   - TransparentFX

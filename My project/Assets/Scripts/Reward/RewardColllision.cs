@@ -5,6 +5,8 @@ public class RewardColllision : MonoBehaviour
     private UIManager uiManager;
     private bool playerNearInteractable = false;
 
+    public AudioSource fallAudio;
+
     void Start()
     {
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
@@ -12,6 +14,10 @@ public class RewardColllision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Ground"))
+        {
+            fallAudio.Play();
+        }
         if (other.CompareTag("Player"))
         {
             playerNearInteractable = true;
