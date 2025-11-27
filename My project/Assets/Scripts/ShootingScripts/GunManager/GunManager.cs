@@ -38,7 +38,9 @@ public class GunManager : MonoBehaviour
                     break;
             }
         }
-        this.CurrentGun = this.Guns[0];
+        //this.CurrentGun = this.Guns[0]; //pistol
+        this.CurrentGun = this.Guns[1]; //sniper
+        //this.CurrentGun = this.Guns[2]; //shotgun
     }
 
     private void DisableGuns()

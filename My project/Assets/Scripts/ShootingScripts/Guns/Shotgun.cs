@@ -11,5 +11,5 @@ public class Shotgun : Gun
     private const bool CAN_ZOOM = false;
 
     public Shotgun(GameObject weapon, GameObject muzzleFlash)
-        : base(weapon, muzzleFlash, RANGE,SHOOTING_DELAY, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
+        : base(weapon, muzzleFlash, weapon.GetComponentInChildren<AudioSource>(), RANGE,SHOOTING_DELAY, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
 }

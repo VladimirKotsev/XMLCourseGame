@@ -12,6 +12,6 @@ public class Sniper : Gun
     private const bool CAN_ZOOM = true;
 
     public Sniper(GameObject weapon, GameObject muzzleFlash)
-        : base(weapon, muzzleFlash, RANGE,SHOOTING_DELAY, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
+        : base(weapon, muzzleFlash, weapon.GetComponentInChildren<AudioSource>(), RANGE,SHOOTING_DELAY, RECOIL_AMOUNT, RECOIL_RETURN_SPEED, RECOIL_KICKBACK, CAN_ZOOM) { }
 
 }

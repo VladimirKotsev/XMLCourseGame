@@ -54,6 +54,11 @@ public class ShootingScript : MonoBehaviour
         return this.CurrentGun().MuzzleFlash;
     }
 
+    private AudioSource AudioSource()
+    {
+        return this.CurrentGun().GunAudio;
+    }
+
     private Gun CurrentGun()
     {
         return this.gunManager.CurrentGun;
@@ -66,7 +71,17 @@ public class ShootingScript : MonoBehaviour
 
     void Shoot()
     {
-        // Enable muzzle flash briefly
+
+        // --- 1. PLAY AUDIO HERE ---
+        // We get the specific AudioSource and Clip from the current gun object
+        Gun gun = CurrentGun();
+
+        if (AudioSource() != null && AudioSource().clip != null)
+        {
+            // Use PlayOneShot so rapid fire sounds overlap naturally
+            AudioSource().PlayOneShot(AudioSource().clip);
+        }
+
         MuzzleFlash().SetActive(true);
         Invoke(nameof(DisableMuzzleFlash), 0.05f);
 
