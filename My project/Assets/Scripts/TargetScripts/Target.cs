@@ -5,6 +5,7 @@ public class Target : MonoBehaviour
     [Header("Target Settings")]
     public int health = 3;
     public GameObject hitEffect;
+    public AudioSource destoySound;
     public GameObject fallObject;
 
     public void OnHit()
@@ -22,6 +23,10 @@ public class Target : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(fallObject, this.transform.position, this.transform.rotation);
+            if (destoySound != null && destoySound.clip != null)
+            {
+                AudioSource.PlayClipAtPoint(destoySound.clip, transform.position);
+            }
             Destroy(gameObject);
             //Reward should have ridgedBody and fall down!!
         }
