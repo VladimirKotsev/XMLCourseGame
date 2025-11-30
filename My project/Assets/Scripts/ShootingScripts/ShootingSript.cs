@@ -8,6 +8,7 @@ public class ShootingScript : MonoBehaviour
     public Camera playerCamera;
     public Transform weaponHolder;
     public GameObject scopeOverlay;
+    public ScoreManager scoreManager;
 
     private GunManager gunManager;
     private Vector3 originalPosition;
@@ -129,33 +130,28 @@ public class ShootingScript : MonoBehaviour
         {
             Debug.Log("Hit: " + hit.transform.name);
 
-            // If the hit object has a Target component, deal damage
-            // Check tag types
             if (hit.transform.CompareTag("Target"))
             {
                 if (hit.transform.TryGetComponent(out Target target))
                     target.OnHit();
+                scoreManager.AddScore(1);
             }
             else if (hit.transform.CompareTag("Reward"))
             {
-                // You have shot the target. Points should be taken!!!!
-                Debug.Log("Reward has beeen hit!");
+                scoreManager.AddScore(-5);
             }
             else if (hit.transform.CompareTag("Other"))
             {
-                // You have missed your shot. Points should be taken!!!!!
-                Debug.Log("Hit object with Other tag.");
+                scoreManager.AddScore(-1);
             }
             else
             {
-                // In case we have more tags in the scene!!
-                Debug.Log("Hit object with unrecognized tag.");
+                scoreManager.AddScore(-1);
             }
         }
         else
         {
-            // You have missed your shot. Points should be taken!!!!!
-            Debug.Log("Missed!");
+            scoreManager.AddScore(-1);
         }
     }
     void ApplyRecoil()

@@ -10,6 +10,7 @@ TagManager:
   - GunModel
   - Ground
   - Crosshair
+  - Reward
   layers:
   - Default
   - TransparentFX
