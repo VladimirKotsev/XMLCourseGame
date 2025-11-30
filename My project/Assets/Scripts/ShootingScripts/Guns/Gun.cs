@@ -12,8 +12,9 @@ public abstract class Gun
     public float ShootingDelay { get; set; }
     public float RecoilKickback { get; set; }
     public bool CanZoom { get; set; }
+    public float Zoom_FOV { get; set; }
 
-    public Gun(GameObject weapon, GameObject muzzleFlash, AudioSource audioSource, float range, float shootingDelay, float recoilAmount, float recoilReturnSpeed, float recoilKickback, bool canZoom)
+    public Gun(GameObject weapon, GameObject muzzleFlash, AudioSource audioSource, float range, float shootingDelay, float recoilAmount, float recoilReturnSpeed, float recoilKickback, bool canZoom, float zoom_FOV)
     {
         MuzzleFlash = muzzleFlash;
         GunAudio = audioSource;
@@ -24,5 +25,6 @@ public abstract class Gun
         RecoilReturnSpeed = recoilReturnSpeed;
         RecoilKickback = recoilKickback;
         CanZoom = canZoom;
+        Zoom_FOV = zoom_FOV;
     }
 }

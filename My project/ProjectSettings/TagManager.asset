@@ -9,6 +9,7 @@ TagManager:
   - UIManager
   - GunModel
   - Ground
+  - Crosshair
   layers:
   - Default
   - TransparentFX

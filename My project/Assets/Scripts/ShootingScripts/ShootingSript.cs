@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,6 +7,7 @@ public class ShootingScript : MonoBehaviour
 {
     public Camera playerCamera;
     public Transform weaponHolder;
+    public GameObject scopeOverlay;
 
     private GunManager gunManager;
     private Vector3 originalPosition;
@@ -14,10 +15,23 @@ public class ShootingScript : MonoBehaviour
     private Vector3 targetPosition;
     private Quaternion targetRotation;
     private float nextShootTime = 0f;
+    private bool isScoped = false;
+    private float normalFOV;
 
     void Start()
     {
+        // THIS SHOULD WORK WHEN CHANGING WEAPONS => SHOULD BE MOVED TO A DIFFERENT METHOD/CLASS !!!!
+        //if (CurrentGun().CanZoom)
+        //{
+        //    GameObject.FindGameObjectWithTag("Crosshair").SetActive(false);
+        //}
+        //else
+        //{
+        //    GameObject.FindGameObjectWithTag("Crosshair").SetActive(true);
+        //}
+        normalFOV = playerCamera.fieldOfView;
         gunManager = GameObject.FindGameObjectWithTag("Player").GetComponent<GunManager>();
+
         originalPosition = weaponHolder.localPosition;
         originalRotation = weaponHolder.localRotation;
 
@@ -34,6 +48,15 @@ public class ShootingScript : MonoBehaviour
             CurrentAnimator().SetTrigger("Shooting");
 
             nextShootTime = Time.time + CurrentGun().ShootingDelay;
+        }
+        if (Input.GetButtonDown("Fire2") && CurrentGun().CanZoom && Time.time >= nextShootTime)
+        {
+            isScoped = !isScoped;
+
+            if (isScoped)
+                OnScoped();
+            else
+                OnUnscoped();
         }
 
         weaponHolder.localPosition = Vector3.Lerp(
@@ -69,16 +92,31 @@ public class ShootingScript : MonoBehaviour
         return CurrentGun().Weapon.GetComponentInChildren<Animator>();
     }
 
+    void OnScoped()
+    {
+        scopeOverlay.SetActive(true);
+
+        weaponHolder.gameObject.SetActive(false);
+
+        playerCamera.fieldOfView = CurrentGun().Zoom_FOV;
+    }
+
+    void OnUnscoped()
+    {
+        scopeOverlay.SetActive(false);
+        weaponHolder.gameObject.SetActive(true);
+
+        playerCamera.fieldOfView = normalFOV;
+        isScoped = false;
+    }
+
     void Shoot()
     {
-
-        // --- 1. PLAY AUDIO HERE ---
-        // We get the specific AudioSource and Clip from the current gun object
         Gun gun = CurrentGun();
+        OnUnscoped();
 
         if (AudioSource() != null && AudioSource().clip != null)
         {
-            // Use PlayOneShot so rapid fire sounds overlap naturally
             AudioSource().PlayOneShot(AudioSource().clip);
         }
 
