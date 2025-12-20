@@ -5,4 +5,5 @@ public enum UIState
     NearInteractable = 2,
     Interacting = 3,
     Zoom = 4,
+    Inventory = 5,
 }

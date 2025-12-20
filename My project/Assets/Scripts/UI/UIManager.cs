@@ -27,7 +27,9 @@ public class UIManager : MonoBehaviour
         foreach (var pair in stateUIElementsPairs)
         {
             if (!stateDictionary.ContainsKey(pair.state))
+            {
                 stateDictionary.Add(pair.state, pair.uiElement);
+            }
         }
     }
 
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
     private void UpdateUI()
     {
         foreach (var kvp in stateDictionary)
+        {
             kvp.Value.SetActive(kvp.Key == State);
+        }
     }
 }
