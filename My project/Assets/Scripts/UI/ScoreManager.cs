@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Don't forget this!
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {

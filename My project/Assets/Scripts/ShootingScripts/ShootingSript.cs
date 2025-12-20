@@ -7,9 +7,9 @@ public class ShootingScript : MonoBehaviour
 {
     public Camera playerCamera;
     public Transform weaponHolder;
-    public GameObject scopeOverlay;
     public ScoreManager scoreManager;
 
+    private UIManager uiManager;
     private GunManager gunManager;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
@@ -32,6 +32,7 @@ public class ShootingScript : MonoBehaviour
         //}
         normalFOV = playerCamera.fieldOfView;
         gunManager = GameObject.FindGameObjectWithTag("Player").GetComponent<GunManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
         originalPosition = weaponHolder.localPosition;
         originalRotation = weaponHolder.localRotation;
@@ -95,7 +96,7 @@ public class ShootingScript : MonoBehaviour
 
     void OnScoped()
     {
-        scopeOverlay.SetActive(true);
+        uiManager.State = UIState.Zoom;
 
         weaponHolder.gameObject.SetActive(false);
 
@@ -104,7 +105,7 @@ public class ShootingScript : MonoBehaviour
 
     void OnUnscoped()
     {
-        scopeOverlay.SetActive(false);
+        uiManager.State = UIState.Crosshair;
         weaponHolder.gameObject.SetActive(true);
 
         playerCamera.fieldOfView = normalFOV;

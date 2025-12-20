@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 868266}
   - component: {fileID: 868268}
   - component: {fileID: 868269}
+  - component: {fileID: 868270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -363,6 +364,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &868270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef342b92f1685a4098b7112d3016b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
 --- !u!1 &1248216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6506,6 +6519,41 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &382382533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382382534}
+  m_Layer: 5
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &382382534
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382382533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 757726997}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &387441400
 GameObject:
   m_ObjectHideFlags: 0
@@ -11908,7 +11956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -415, y: -120}
+  m_AnchoredPosition: {x: -415, y: -160}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &610286324
@@ -11997,7 +12045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShootingScript
   playerCamera: {fileID: 330585545}
   weaponHolder: {fileID: 1272161390}
-  scopeOverlay: {fileID: 1098286502}
   scoreManager: {fileID: 2119655650}
 --- !u!82 &617675377
 AudioSource:
@@ -12243,7 +12290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 212.6}
+  m_AnchoredPosition: {x: -350, y: 224}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638539007
@@ -12293,8 +12340,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
-  m_fontSizeBase: 54
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12380,7 +12427,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 550}
+  m_SizeDelta: {x: 1035.52, y: 582.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642754599
 MonoBehaviour:
@@ -12783,7 +12830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &757726997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12799,6 +12846,7 @@ RectTransform:
   - {fileID: 642754598}
   - {fileID: 638539006}
   - {fileID: 2050845338}
+  - {fileID: 382382534}
   m_Father: {fileID: 1399877599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14564,7 +14612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -415, y: 0}
+  m_AnchoredPosition: {x: -415, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1151400241
@@ -23264,9 +23312,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119655647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef342b92f1685a4098b7112d3016b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c92e55bac67a546944ae9aea54f03b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
+  itemsContainer: {fileID: 382382533}
+  itemPrefab: {fileID: 8794904639465095718, guid: 66a23ef6194101340b54d6e417928115, type: 3}
 --- !u!1 &2145376555
 GameObject:
   m_ObjectHideFlags: 0
