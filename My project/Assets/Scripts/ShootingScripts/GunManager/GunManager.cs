@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class GunManager : MonoBehaviour
 {
-    public GunUIManager uiManager;
-
     public List<GunInput> InputList;
     public List<Gun> Guns = new List<Gun>();
 
+    private GunUIManager uiManager;
     private Gun currentGun;
     public Gun CurrentGun {
         get => currentGun;
@@ -57,6 +56,8 @@ public class GunManager : MonoBehaviour
 
     private void Awake()
     {
+        uiManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
+        Debug.Log(uiManager);
         foreach (var inputItem in InputList)
         {
             switch (inputItem.gunType)
@@ -72,9 +73,11 @@ public class GunManager : MonoBehaviour
                     break;
             }
         }
-        //this.CurrentGun = this.Guns[0]; //pistol
-        //this.CurrentGun = this.Guns[1]; //sniper
-        this.CurrentGun = this.Guns[2]; //shotgun
+
+        if (Guns.Count > 0)
+        {
+            EquipGun(0);
+        }
     }
 
     private void DisableGuns()
