@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class ExpertTargetMovement : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float speed = 11f;
     public float maxTravelDistance = 50f;
-    public float stopChancePerSecond = 0.35f;
-    public float minStopTime = 0.1f;
-    public float maxStopTime = 0.5f;
+    public Vector3 moveAxis = Vector3.up;
 
+    [Header("Wave Settings")]
     public float waveAmplitude = 2.9f;
     public float waveFrequency = 2.8f;
-    public Vector3 moveAxis = Vector3.up;
 
     private Vector3 startPos;
     private bool movingForward = true;
-    private bool isStopped = false;
-    private float stopTimer = 0f;
 
     void Start()
     {
@@ -24,32 +21,17 @@ public class ExpertTargetMovement : MonoBehaviour
 
     void Update()
     {
-        if (isStopped)
-        {
-            stopTimer -= Time.deltaTime;
-            if (stopTimer <= 0f)
-            {
-                isStopped = false;
-                movingForward = !movingForward;
-            }
-            return;
-        }
-
-        if (Random.value < stopChancePerSecond * Time.deltaTime)
-        {
-            isStopped = true;
-            stopTimer = Random.Range(minStopTime, maxStopTime);
-            return;
-        }
-
         Vector3 direction = movingForward ? moveAxis.normalized : -moveAxis.normalized;
 
-        Vector3 waveOffset = Vector3.right * Mathf.Sin(Time.time * waveFrequency) * waveAmplitude;
+        Vector3 waveVelocity = Vector3.right * Mathf.Sin(Time.time * waveFrequency) * waveAmplitude;
 
-        transform.position += (direction * speed * Time.deltaTime) + waveOffset * Time.deltaTime;
+        transform.position += (direction * speed * Time.deltaTime) + (waveVelocity * Time.deltaTime);
 
         float distanceFromStart = Vector3.Distance(startPos, transform.position);
+
         if (distanceFromStart >= maxTravelDistance)
+        {
             movingForward = !movingForward;
+        }
     }
 }
