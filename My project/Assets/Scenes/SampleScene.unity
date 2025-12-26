@@ -13907,7 +13907,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1566538869574b645baf15560fbd7b6f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -15611,7 +15611,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1566538869574b645baf15560fbd7b6f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -16112,11 +16112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d15fd5ef977ebb4bb9875f973cb5288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurvedTargetMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   moveSpeed: 5
   amplitude: 2.8
   frequency: 1.7
-  moveDistance: 100
-  moveDirection: {x: 0, y: 0, z: 1}
+  waveAxis: {x: 0, y: 1, z: 0}
 --- !u!82 &1045181564
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24085,7 +24086,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1566538869574b645baf15560fbd7b6f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
