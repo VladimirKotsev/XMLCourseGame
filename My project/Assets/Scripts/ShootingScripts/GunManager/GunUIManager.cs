@@ -14,12 +14,10 @@ public class GunUIManager : MonoBehaviour
     }
 
     public List<GunPositionData> gunUiPositions;
-    private Dictionary<string, float> _positionLookup;
+    private Dictionary<string, float> _positionLookup = new Dictionary<string, float>();
 
     void Awake()
     {
-        _positionLookup = new Dictionary<string, float>();
-
         foreach (var data in gunUiPositions)
         {
             if (!_positionLookup.ContainsKey(data.gunName))

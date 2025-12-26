@@ -17,13 +17,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private Dictionary<UIState, GameObject> stateDictionary;
+    private Dictionary<UIState, GameObject> stateDictionary = new Dictionary<UIState, GameObject>();
     public List<UIStateElementPair> stateUIElementsPairs;
     // TODO: Pass last message
 
-    private void Awake()
+    private void Start()
     {
-        stateDictionary = new Dictionary<UIState, GameObject>();
+        State = UIState.Crosshair;
 
         foreach (var pair in stateUIElementsPairs)
         {
@@ -34,13 +34,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        State = UIState.Crosshair;
-    }
-
     private void UpdateUI()
     {
+        if (stateDictionary.Count == 0) 
+            return;
+
         foreach (var kvp in stateDictionary)
         {
             kvp.Value.SetActive(kvp.Key == State);

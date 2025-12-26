@@ -21,9 +21,8 @@ public class GunManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        // chaka 1-2-3 kato input
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EquipGun(0);
@@ -44,20 +43,16 @@ public class GunManager : MonoBehaviour
         {
             this.CurrentGun = this.Guns[index];
 
-            // izvikva function change selected gun ui -drug script
-            // Checks if UI manager is assigned to avoid errors
             if (uiManager != null)
             {
-                // Replace 'UpdateGunUI' with the actual function name in your UI script
                 uiManager.UpdateGunUI(this.CurrentGun);
             }
         }
     }
 
-    private void Awake()
+    void Start()
     {
         uiManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
-        Debug.Log(uiManager);
         foreach (var inputItem in InputList)
         {
             switch (inputItem.gunType)

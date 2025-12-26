@@ -2,33 +2,32 @@ using UnityEngine;
 
 public class LinearTargetMovement : MonoBehaviour
 {
+    public Vector3 startPosition;
+    public Vector3 endPosition;
     public float speed = 7f;
-    public float moveDistance = 100f; // how far it should move before turning back
 
-    private Vector3 startPos;
-    private bool movingForward = true;
+    private Vector3 currentTarget;
 
     void Start()
     {
-        startPos = transform.position;
+        transform.position = startPosition;
+        currentTarget = endPosition;
     }
 
     void Update()
     {
-        // Move in current direction
-        if (movingForward)
-            transform.Translate(transform.up * speed * Time.deltaTime, Space.World);
-        else
-            transform.Translate(-transform.up * speed * Time.deltaTime, Space.World);
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
 
-        // Check distance traveled
-        float distanceFromStart = Vector3.Distance(startPos, transform.position);
-
-        // Reverse direction when reaching max distance
-        if (distanceFromStart >= moveDistance)
+        if (Vector3.Distance(transform.position, currentTarget) < 0.001f)
         {
-            movingForward = !movingForward;
-            startPos = transform.position; // reset for the next leg
+            if (currentTarget == endPosition)
+            {
+                currentTarget = startPosition;
+            }
+            else
+            {
+                currentTarget = endPosition;
+            }
         }
     }
 }

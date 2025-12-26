@@ -1868,7 +1868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 337.5, y: 0}
+  m_AnchoredPosition: {x: 340, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &257295725
@@ -13892,8 +13892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d8019c7a39d7f429e01a804409660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LinearTargetMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   speed: 7
-  moveDistance: 100
 --- !u!82 &748738853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15595,8 +15596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d8019c7a39d7f429e01a804409660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LinearTargetMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   speed: 7
-  moveDistance: 100
 --- !u!82 &989706419
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16023,8 +16025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d8019c7a39d7f429e01a804409660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LinearTargeteMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   speed: 7
-  moveDistance: 100
 --- !u!23 &1045181559
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17640,6 +17643,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1296460740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8794904639465095718, guid: 66a23ef6194101340b54d6e417928115, type: 3}
+  m_PrefabInstance: {fileID: 1838516197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1301152244
 GameObject:
   m_ObjectHideFlags: 0
@@ -23972,8 +23980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d8019c7a39d7f429e01a804409660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LinearTargeteMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   speed: 7
-  moveDistance: 100
 --- !u!23 &1637927051
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24058,14 +24067,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb7c4e575accea4983929e3b1b15e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExpertTargetMovement
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
   speed: 11
-  maxTravelDistance: 50
-  stopChancePerSecond: 0.35
-  minStopTime: 0.1
-  maxStopTime: 0.5
   waveAmplitude: 3
   waveFrequency: 2.5
-  moveAxis: {x: 0, y: 0, z: 1}
+  waveAxis: {x: 1, y: 0, z: 0}
 --- !u!82 &1637927056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25834,7 +25841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8794904639465095718, guid: 66a23ef6194101340b54d6e417928115, type: 3}
       propertyPath: m_Name
-      value: Item
+      value: BoxItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26394,11 +26401,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1927889138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4928564b9d5f9dc48be2936bc061a07d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a551489a2fba714ea12df5b98e5708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunUIManager
-  Selector: {fileID: 0}
-  gunUiPositions: []
+  Selector: {fileID: 108168857}
+  gunUiPositions:
+  - gunName: Pistol
+    xLocation: -850
+  - gunName: Sniper
+    xLocation: -681
+  - gunName: Shotgun
+    xLocation: -512
 --- !u!1 &1931304278
 GameObject:
   m_ObjectHideFlags: 0
@@ -27987,6 +28000,7 @@ MonoBehaviour:
   - {fileID: 1086811661}
   - {fileID: 382382533}
   itemPrefab: {fileID: 8794904639465095718, guid: 66a23ef6194101340b54d6e417928115, type: 3}
+  uiItemElement: {fileID: 1296460740}
 --- !u!1 &2145376555
 GameObject:
   m_ObjectHideFlags: 0
