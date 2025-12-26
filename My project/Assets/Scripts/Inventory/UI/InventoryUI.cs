@@ -9,8 +9,9 @@ public class InventoryUI : MonoBehaviour
     private InventoryManager inventoryManager;
     private bool isInventoryOpen = false;
 
-    public GameObject itemsContainer;
+    public GameObject[] itemsContainers;
     public GameObject itemPrefab;
+    public GameObject uiItemElement;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void RenderItems()
+    public void RenderItems()
     {
         var items = inventoryManager.GetAll();
 
@@ -55,25 +56,40 @@ public class InventoryUI : MonoBehaviour
             float xPos = startX + (column * xSpacing);
             float yPos = startY - (row * ySpacing);
 
-            GameObject itemGO = Instantiate(itemPrefab, itemsContainer.transform);
-
-            RectTransform rect = itemGO.GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(xPos, yPos);
-
-            UIItem itemUI = itemGO.GetComponent<UIItem>();
-            if (itemUI != null)
+            foreach (var itemsContainer in itemsContainers)
             {
-                itemUI.Name = items.ToArray()[i].Name;
+                GameObject itemGO = Instantiate(itemPrefab, itemsContainer.transform);
+
+                RectTransform rect = itemGO.GetComponent<RectTransform>();
+                rect.anchoredPosition = new Vector2(xPos, yPos);
+
+                UIItem itemUI = itemGO.GetComponent<UIItem>();
+                if (itemUI != null)
+                {
+                    itemUI.Name = items.ToArray()[i].Name;
+                }
             }
         }
     }
 
-    private void ClearItems()
+    public void ClearItems()
     {
-        for (int i = itemsContainer.transform.childCount - 1; i >= 0; i--)
+        foreach (var itemsContainer in itemsContainers) 
         {
-            Destroy(itemsContainer.transform.GetChild(i).gameObject);
+            for (int i = itemsContainer.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(itemsContainer.transform.GetChild(i).gameObject);
+            }
         }
     }
 
+    public void ShowItem() 
+    {
+        this.uiItemElement.SetActive(true);
+    }
+
+    public void HideItem() 
+    {
+        this.uiItemElement.SetActive(false);
+    }
 }
