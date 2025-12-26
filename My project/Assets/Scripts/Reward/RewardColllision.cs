@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class RewardColllision : MonoBehaviour
@@ -5,6 +6,8 @@ public class RewardColllision : MonoBehaviour
     private UIManager uiManager;
     private InventoryManager inventoryManager;
     private InventoryUI inventoryUI;
+    private GameManager gameManager;
+
     private bool playerNearInteractable = false;
     private bool isTaken = false;
 
@@ -17,6 +20,7 @@ public class RewardColllision : MonoBehaviour
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         inventoryUI = GameObject.FindGameObjectWithTag("UIManager").GetComponent<InventoryUI>();
+        gameManager = GameObject.FindGameObjectWithTag("GameLoader").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,6 +71,7 @@ public class RewardColllision : MonoBehaviour
                     this.inventoryManager.AddItem(this.item);
                     this.inventoryUI.HideItem();
                     isTaken = true;
+                    this.gameManager.CheckForLevelCompletion(this.inventoryManager.GetAll().Count());
                 }
                 this.UpdateItems();
             }

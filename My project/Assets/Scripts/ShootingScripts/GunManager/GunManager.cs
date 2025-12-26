@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GunManager : MonoBehaviour
 
     private GunUIManager uiManager;
     private Gun currentGun;
+
     public Gun CurrentGun {
         get => currentGun;
         set
@@ -18,6 +20,31 @@ public class GunManager : MonoBehaviour
             currentGun = value;
             DisableGuns();
             currentGun.Weapon.SetActive(true);
+        }
+    }
+
+    void Start()
+    {
+        uiManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
+        foreach (var inputItem in InputList)
+        {
+            switch (inputItem.gunType)
+            {
+                case GunInput.Type.Pistol:
+                    Guns.Add(new Pistol(inputItem.GameObject, inputItem.muzzleFlash));
+                    break;
+                case GunInput.Type.Sniper:
+                    Guns.Add(new Sniper(inputItem.GameObject, inputItem.muzzleFlash));
+                    break;
+                case GunInput.Type.Shotgun:
+                    Guns.Add(new Shotgun(inputItem.GameObject, inputItem.muzzleFlash));
+                    break;
+            }
+        }
+
+        if (Guns.Count > 0)
+        {
+            EquipGun(0);
         }
     }
 
@@ -47,31 +74,6 @@ public class GunManager : MonoBehaviour
             {
                 uiManager.UpdateGunUI(this.CurrentGun);
             }
-        }
-    }
-
-    void Start()
-    {
-        uiManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
-        foreach (var inputItem in InputList)
-        {
-            switch (inputItem.gunType)
-            {
-                case GunInput.Type.Pistol:
-                    Guns.Add(new Pistol(inputItem.GameObject, inputItem.muzzleFlash));
-                    break;
-                case GunInput.Type.Sniper:
-                    Guns.Add(new Sniper(inputItem.GameObject, inputItem.muzzleFlash));
-                    break;
-                case GunInput.Type.Shotgun:
-                    Guns.Add(new Shotgun(inputItem.GameObject, inputItem.muzzleFlash));
-                    break;
-            }
-        }
-
-        if (Guns.Count > 0)
-        {
-            EquipGun(0);
         }
     }
 

@@ -17,13 +17,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public UIManager()
+    {
+        this.State = UIState.Crosshair;       
+    }
+
     private Dictionary<UIState, GameObject> stateDictionary = new Dictionary<UIState, GameObject>();
     public List<UIStateElementPair> stateUIElementsPairs;
     // TODO: Pass last message
 
     private void Start()
     {
-        State = UIState.Crosshair;
+        this.State = UIState.Crosshair;
 
         foreach (var pair in stateUIElementsPairs)
         {
