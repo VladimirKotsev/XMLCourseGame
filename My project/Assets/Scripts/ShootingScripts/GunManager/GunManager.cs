@@ -10,6 +10,7 @@ public class GunManager : MonoBehaviour
 
     private GunUIManager uiGunManager;
     private UIManager uiManager;
+
     private Gun currentGun;
 
     public Gun CurrentGun {
@@ -28,6 +29,7 @@ public class GunManager : MonoBehaviour
     {
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         uiGunManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
+
         foreach (var inputItem in InputList)
         {
             switch (inputItem.gunType)

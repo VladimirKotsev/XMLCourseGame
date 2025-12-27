@@ -14,10 +14,9 @@ public class Target : MonoBehaviour
 
         Debug.Log($"{gameObject.name} hit! Remaining health: {health}");
 
-        // Show effect when hit?!?!
         if (hitEffect != null)
         {
-            Instantiate(hitEffect, this.transform.position, Quaternion.identity);
+            Instantiate(hitEffect, transform.position + new Vector3(0, 5f, 0), Quaternion.identity);
         }
 
         if (health <= 0)
@@ -28,7 +27,6 @@ public class Target : MonoBehaviour
                 AudioSource.PlayClipAtPoint(destoySound.clip, transform.position);
             }
             Destroy(gameObject);
-            //Reward should have ridgedBody and fall down!!
         }
     }
 }
