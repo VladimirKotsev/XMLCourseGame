@@ -5,10 +5,20 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int currentLevel = 1;
+    private UIManager uiManager;
+
     public GameData gameData;
+
+    //Prefabs
+    public GameObject playerPrefab;
+
+    public GameObject linearBalloonPrefab;
+    public GameObject curvedBalloonPrefab;
+    public GameObject expertBalloonPrefab;
 
     void Start()
     {
+        this.uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         this.LoadXml();
         this.LoadCurrentLevel();
     }
@@ -17,10 +27,10 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("Noviq level");
+        Debug.Log("New level");
         if (this.gameData.Levels.LevelList.Count == this.currentLevel)
         {
-            // TODO: Game over
+            this.GameOver();
             return;
         }
 
@@ -28,11 +38,44 @@ public class GameManager : MonoBehaviour
         this.LoadCurrentLevel();
     }
 
+    private void GameOver()
+    {
+        this.uiManager.State = UIState.GameOver;
+        Time.timeScale = 0f;
+    }
+
     private void LoadCurrentLevel()
     {
-        // Player at zero
-        // Instantiate the baloons -> for every ballon create instance with item inside
+        MovePlayerToBeginning(10, 10, 10);
+        foreach (var balloon in this.CurrentGameLevel.Balloons.BalloonList)
+        {
+            if (balloon.Trajectory.Type == TrajectoryType.linear)
+            {
+                CreateBalloon(this.linearBalloonPrefab, balloon);
+            }
+            else if (balloon.Trajectory.Type == TrajectoryType.curved)
+            {
+                CreateBalloon(this.curvedBalloonPrefab, balloon);
+            }
+            else 
+            {
+                CreateBalloon(this.expertBalloonPrefab, balloon);
+            }
+        }
+    }
 
+    private void CreateBalloon(GameObject linearBalloonPrefab, Balloon balloon)
+    {
+        // TODO
+        // Instantiate at start point
+        // Set the item in the reference.
+        // Set the hits in the reference
+        Instantiate(this.linearBalloonPrefab);
+    }
+
+    private void MovePlayerToBeginning(int x, int y, int z)
+    {
+        this.playerPrefab.transform.position.Set(x, y, z);
     }
 
     public void CheckForLevelCompletion(int currentBalloonCount) 
