@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void MovePlayerToBeginning(int x, int y, int z)
     {
-        this.playerPrefab.transform.position.Set(x, y, z);
+        // TODO
     }
 
     public void CheckForLevelCompletion(int currentBalloonCount) 
