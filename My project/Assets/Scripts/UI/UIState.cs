@@ -6,4 +6,5 @@ public enum UIState
     Interacting = 3,
     Zoom = 4,
     Inventory = 5,
+    GameOver = 6,
 }
