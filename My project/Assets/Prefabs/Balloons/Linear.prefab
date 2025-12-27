@@ -105,10 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6084903714247324183bd7f48703fc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target
-  health: 3
-  hitEffect: {fileID: 7473629727419657144}
-  destoySound: {fileID: 1671800144564225869}
-  fallObject: {fileID: 5933049745015090563, guid: 7a27ac0d8166a124eb7bd36f2c914aaf, type: 3}
+  Health: 3
+  HitEffect: {fileID: 7473629727419657144}
+  DestoySound: {fileID: 1671800144564225869}
+  FallObject: {fileID: 5933049745015090563, guid: 7a27ac0d8166a124eb7bd36f2c914aaf, type: 3}
 --- !u!114 &3792086643002050595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LinearTargetMovement
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
-  speed: 7
+  moveSpeed: 5
 --- !u!82 &1671800144564225869
 AudioSource:
   m_ObjectHideFlags: 0

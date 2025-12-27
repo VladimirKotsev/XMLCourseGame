@@ -11,7 +11,6 @@ public class RewardColllision : MonoBehaviour
     private bool playerNearInteractable = false;
     private bool isTaken = false;
 
-    // TODO: Load item from xml
     public InventoryItem item = new InventoryItem { Name = "Change me"};
     public AudioSource fallAudio;
 

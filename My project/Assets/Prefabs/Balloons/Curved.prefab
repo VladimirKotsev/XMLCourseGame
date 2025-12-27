@@ -5070,10 +5070,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6084903714247324183bd7f48703fc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target
-  health: 3
-  hitEffect: {fileID: 9167284070911774708}
-  destoySound: {fileID: 8302556147267790214}
-  fallObject: {fileID: 5933049745015090563, guid: 7a27ac0d8166a124eb7bd36f2c914aaf, type: 3}
+  Health: 3
+  HitEffect: {fileID: 9167284070911774708}
+  DestoySound: {fileID: 8302556147267790214}
+  FallObject: {fileID: 5933049745015090563, guid: 7a27ac0d8166a124eb7bd36f2c914aaf, type: 3}
 --- !u!82 &8302556147267790214
 AudioSource:
   m_ObjectHideFlags: 0

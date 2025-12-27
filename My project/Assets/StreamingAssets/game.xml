@@ -8,19 +8,19 @@
             <balloons>
 
                 <balloon hitpoints="3">
-                    <item>Coin</item>
+                    <item>Coin 1</item>
                     <trajectory
                         startX="0" startY="0"
-                        endX="8" endY="4"
+                        endX="30" endY="0"
                         speed="6"
                         type="linear"/>
                 </balloon>
 
                 <balloon hitpoints="2">
-                    <item>Gem</item>
+                    <item>Gem 1</item>
                     <trajectory
                         startX="1" startY="2"
-                        endX="9" endY="5"
+                        endX="50" endY="50"
                         speed="9"
                         type="curved"/>
                 </balloon>
@@ -33,10 +33,10 @@
             <balloons>
 
                 <balloon hitpoints="1">
-                    <item>Coin</item>
+                    <item>Coin 2</item>
                     <trajectory
                         startX="0" startY="1"
-                        endX="10" endY="3"
+                        endX="100" endY="3"
                         speed="7"
                         type="linear"/>
                 </balloon>
@@ -45,18 +45,9 @@
                     <item>Star</item>
                     <trajectory
                         startX="2" startY="0"
-                        endX="12" endY="6"
+                        endX="12" endY="60"
                         speed="11"
                         type="curved"/>
-                </balloon>
-
-                <balloon hitpoints="2">
-                    <item>Gem</item>
-                    <trajectory
-                        startX="3" startY="1"
-                        endX="11" endY="4"
-                        speed="10"
-                        type="expert"/>
                 </balloon>
 
             </balloons>
@@ -67,47 +58,20 @@
             <balloons>
 
                 <balloon hitpoints="2">
-                    <item>Coin</item>
+                    <item>Coin 3</item>
                     <trajectory
                         startX="0" startY="3"
-                        endX="7" endY="6"
+                        endX="50" endY="50"
                         speed="8"
                         type="linear"/>
                 </balloon>
 
                 <balloon hitpoints="3">
-                    <item>Gem</item>
+                    <item>Gem 3</item>
                     <trajectory
                         startX="2" startY="2"
-                        endX="9" endY="8"
+                        endX="90" endY="8"
                         speed="12"
-                        type="curved"/>
-                </balloon>
-
-                <balloon hitpoints="1">
-                    <item>Star</item>
-                    <trajectory
-                        startX="1" startY="0"
-                        endX="10" endY="5"
-                        speed="5"
-                        type="linear"/>
-                </balloon>
-
-                <balloon hitpoints="2">
-                    <item>Coin</item>
-                    <trajectory
-                        startX="4" startY="1"
-                        endX="14" endY="7"
-                        speed="13"
-                        type="expert"/>
-                </balloon>
-
-                <balloon hitpoints="3">
-                    <item>Gem</item>
-                    <trajectory
-                        startX="5" startY="2"
-                        endX="15" endY="9"
-                        speed="14"
                         type="curved"/>
                 </balloon>
 

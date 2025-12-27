@@ -1,12 +1,7 @@
 using UnityEngine;
 
-public class CurvedTargetMovement : MonoBehaviour
+public class CurvedTargetMovement : TargetMovement
 {
-    [Header("Trajectory Settings")]
-    public Vector3 startPosition;
-    public Vector3 endPosition;
-    public float moveSpeed = 5f;
-
     [Header("Wave Settings")]
     public float amplitude = 2.8f;
     public float frequency = 1.7f;

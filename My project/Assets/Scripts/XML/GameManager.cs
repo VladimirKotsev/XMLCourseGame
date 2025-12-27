@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -46,41 +47,63 @@ public class GameManager : MonoBehaviour
 
     private void LoadCurrentLevel()
     {
-        MovePlayerToBeginning(10, 10, 10);
-        foreach (var balloon in this.CurrentGameLevel.Balloons.BalloonList)
+        foreach (var balloon in CurrentGameLevel.Balloons.BalloonList)
         {
-            if (balloon.Trajectory.Type == TrajectoryType.linear)
-            {
-                CreateBalloon(this.linearBalloonPrefab, balloon);
-            }
-            else if (balloon.Trajectory.Type == TrajectoryType.curved)
-            {
-                CreateBalloon(this.curvedBalloonPrefab, balloon);
-            }
-            else 
-            {
-                CreateBalloon(this.expertBalloonPrefab, balloon);
-            }
+            CreateBalloonInstance(balloon);
         }
     }
 
-    private void CreateBalloon(GameObject linearBalloonPrefab, Balloon balloon)
+    private void CreateBalloonInstance(Balloon balloon)
     {
-        // TODO
-        // Instantiate at start point
-        // Set the item in the reference.
-        // Set the hits in the reference
-        Instantiate(this.linearBalloonPrefab);
+        GameObject instance;
+
+        switch (balloon.Trajectory.Type)
+        {
+            case TrajectoryType.linear:
+                instance = Instantiate(linearBalloonPrefab);
+                SetupMovement<LinearTargetMovement>(instance, balloon);
+                break;
+
+            case TrajectoryType.curved:
+                instance = Instantiate(curvedBalloonPrefab);
+                SetupMovement<CurvedTargetMovement>(instance, balloon);
+                break;
+
+            default:
+                instance = Instantiate(expertBalloonPrefab);
+                SetupMovement<ExpertTargetMovement>(instance, balloon);
+                break;
+        }
+
+        SetupTarget(instance, balloon);
     }
 
-    private void MovePlayerToBeginning(int x, int y, int z)
+    private void SetupMovement<T>(GameObject instance, Balloon balloon)
+    where T : TargetMovement
     {
-        // TODO
+        var movement = instance.GetComponent<T>();
+
+        TargetMovement m = movement;
+        m.startPosition = new Vector3(balloon.Trajectory.StartX, 10, balloon.Trajectory.StartY);
+        m.endPosition = new Vector3(balloon.Trajectory.EndX, 10, balloon.Trajectory.EndY);
+        m.moveSpeed = balloon.Trajectory.Speed;
+    }
+
+    private void SetupTarget(GameObject instance, Balloon balloon)
+    {
+        var target = instance.GetComponent<Target>();
+        target.Health = balloon.Hitpoints;
+        target.Item = new InventoryItem { Name = balloon.Item };
     }
 
     public void CheckForLevelCompletion(int currentBalloonCount) 
     {
-        if (currentBalloonCount == this.CurrentGameLevel.Balloons.BalloonList.Count) 
+        var balloonsCountToLevel = this.gameData.Levels.LevelList
+            .Where(level => level.Id <= this.CurrentGameLevel.Id)
+            .Select(level => level.Balloons.BalloonList.Count())
+            .Sum();
+
+        if (currentBalloonCount == balloonsCountToLevel) 
         {
             this.NextLevel();
         }

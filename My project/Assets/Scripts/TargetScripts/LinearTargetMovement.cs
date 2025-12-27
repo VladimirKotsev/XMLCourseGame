@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class LinearTargetMovement : MonoBehaviour
+public class LinearTargetMovement: TargetMovement
 {
-    public Vector3 startPosition;
-    public Vector3 endPosition;
-    public float speed = 7f;
-
     private Vector3 currentTarget;
 
     void Start()
@@ -16,7 +12,7 @@ public class LinearTargetMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, currentTarget) < 0.001f)
         {
