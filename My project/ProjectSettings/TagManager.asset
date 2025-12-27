@@ -12,6 +12,7 @@ TagManager:
   - Crosshair
   - Reward
   - GunUI
+  - GameLoader
   layers:
   - Default
   - TransparentFX
