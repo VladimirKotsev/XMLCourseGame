@@ -8,7 +8,8 @@ public class GunManager : MonoBehaviour
     public List<GunInput> InputList;
     public List<Gun> Guns = new List<Gun>();
 
-    private GunUIManager uiManager;
+    private GunUIManager uiGunManager;
+    private UIManager uiManager;
     private Gun currentGun;
 
     public Gun CurrentGun {
@@ -25,7 +26,8 @@ public class GunManager : MonoBehaviour
 
     void Start()
     {
-        uiManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        uiGunManager = GameObject.FindGameObjectWithTag("GunUI").GetComponent<GunUIManager>();
         foreach (var inputItem in InputList)
         {
             switch (inputItem.gunType)
@@ -53,14 +55,17 @@ public class GunManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EquipGun(0);
+            uiManager.State = UIState.Crosshair;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             EquipGun(1);
+            uiManager.State = UIState.Idle;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             EquipGun(2);
+            uiManager.State = UIState.Crosshair;
         }
     }
 
@@ -70,9 +75,9 @@ public class GunManager : MonoBehaviour
         {
             this.CurrentGun = this.Guns[index];
 
-            if (uiManager != null)
+            if (uiGunManager != null)
             {
-                uiManager.UpdateGunUI(this.CurrentGun);
+                uiGunManager.UpdateGunUI(this.CurrentGun);
             }
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,19 +16,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public UIManager()
-    {
-        this.State = UIState.Crosshair;       
-    }
-
     private Dictionary<UIState, GameObject> stateDictionary = new Dictionary<UIState, GameObject>();
     public List<UIStateElementPair> stateUIElementsPairs;
-    // TODO: Pass last message
 
     private void Start()
     {
-        this.State = UIState.Crosshair;
-
         foreach (var pair in stateUIElementsPairs)
         {
             if (!stateDictionary.ContainsKey(pair.state))
@@ -37,6 +28,8 @@ public class UIManager : MonoBehaviour
                 stateDictionary.Add(pair.state, pair.uiElement);
             }
         }
+
+        this.State = UIState.Crosshair;
     }
 
     private void UpdateUI()

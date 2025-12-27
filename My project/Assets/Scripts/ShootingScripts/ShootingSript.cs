@@ -1,7 +1,4 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootingScript : MonoBehaviour
 {
@@ -105,7 +102,7 @@ public class ShootingScript : MonoBehaviour
 
     void OnUnscoped()
     {
-        uiManager.State = UIState.Crosshair;
+        uiManager.State = UIState.Idle;
         weaponHolder.gameObject.SetActive(true);
 
         playerCamera.fieldOfView = normalFOV;
@@ -115,7 +112,10 @@ public class ShootingScript : MonoBehaviour
     void Shoot()
     {
         Gun gun = CurrentGun();
-        OnUnscoped();
+        if (gun is Sniper)
+        {
+            OnUnscoped();
+        }
 
         if (AudioSource() != null && AudioSource().clip != null)
         {
