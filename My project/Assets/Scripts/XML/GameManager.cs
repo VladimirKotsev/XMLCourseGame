@@ -88,8 +88,16 @@ public class GameManager : MonoBehaviour
 
     private void LoadXml() 
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "game.xml");
+        string xmlPath = Path.Combine(Application.streamingAssetsPath, "game.xml");
+        string xsdPath = Path.Combine(Application.streamingAssetsPath, "game.xsd");
 
-        this.gameData = XmlLoader.LoadGame(path);
+        if (!XmlValidator.Validate(xmlPath, xsdPath))
+        {
+            Debug.LogError("XML is INVALID. Game will not load.");
+            return;
+        }
+
+        this.gameData = XmlLoader.LoadGame(xmlPath);
+        Debug.Log("Game loaded successfully!");
     }
 }
