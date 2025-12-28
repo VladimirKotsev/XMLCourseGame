@@ -26320,6 +26320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreText: {fileID: 1125525486}
+  levelText: {fileID: 697432952}
 --- !u!114 &2119655651
 MonoBehaviour:
   m_ObjectHideFlags: 0

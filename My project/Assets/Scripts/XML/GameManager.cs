@@ -1,12 +1,14 @@
 using System;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private int currentLevel = 1;
     private UIManager uiManager;
+    private ScoreManager scoreManager;
 
     public GameData gameData;
 
@@ -20,8 +22,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         this.uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        this.scoreManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<ScoreManager>();
         this.LoadXml();
         this.LoadCurrentLevel();
+        this.scoreManager.UpdateLevel(this.currentLevel, this.gameData.Levels.LevelList.Count());
     }
 
     public Level CurrentGameLevel => this.gameData.Levels.LevelList.Where(level => level.Id == currentLevel).FirstOrDefault();
@@ -37,6 +41,7 @@ public class GameManager : MonoBehaviour
 
         this.currentLevel++;
         this.LoadCurrentLevel();
+        this.scoreManager.UpdateLevel(this.currentLevel, this.gameData.Levels.LevelList.Count());
     }
 
     private void GameOver()

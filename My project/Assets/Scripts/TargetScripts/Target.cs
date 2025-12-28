@@ -3,28 +3,32 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     [Header("Target Settings")]
-    public int health = 3;
-    public GameObject hitEffect;
-    public AudioSource destoySound;
-    public GameObject fallObject;
+    public int Health = 3;
+    public GameObject HitEffect;
+    public AudioSource DestoySound;
+    public GameObject FallObject;
+    public InventoryItem Item;
 
     public void OnHit()
     {
-        health--;
+        Health--;
 
-        Debug.Log($"{gameObject.name} hit! Remaining health: {health}");
+        Debug.Log($"{gameObject.name} hit! Remaining health: {Health}");
 
-        if (hitEffect != null)
+        if (HitEffect != null)
         {
-            Instantiate(hitEffect, transform.position + new Vector3(0, 5f, 0), Quaternion.identity);
+            Instantiate(HitEffect, transform.position + new Vector3(0, 5f, 0), Quaternion.identity);
         }
 
-        if (health <= 0)
+        if (Health <= 0)
         {
-            Instantiate(fallObject, this.transform.position, this.transform.rotation);
-            if (destoySound != null && destoySound.clip != null)
+            var fallboxRef = Instantiate(FallObject, this.transform.position, this.transform.rotation);
+            var rewardRef = fallboxRef.gameObject.GetComponent<RewardColllision>();
+            rewardRef.item = this.Item;
+
+            if (DestoySound != null && DestoySound.clip != null)
             {
-                AudioSource.PlayClipAtPoint(destoySound.clip, transform.position);
+                AudioSource.PlayClipAtPoint(DestoySound.clip, transform.position);
             }
             Destroy(gameObject);
         }

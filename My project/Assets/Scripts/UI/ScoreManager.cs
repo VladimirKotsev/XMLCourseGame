@@ -4,6 +4,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI levelText;
 
     private int currentScore = 0;
 
@@ -16,6 +17,14 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += amount;
         UpdateScoreUI();
+    }
+
+    public void UpdateLevel(int current, int all)
+    {
+        if (levelText != null)
+        {
+            levelText.text = "Level: " + current + "/" + all;
+        }
     }
 
     private void UpdateScoreUI()
