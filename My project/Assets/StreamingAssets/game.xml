@@ -53,8 +53,8 @@
                 <balloon hitpoints="3">
                     <item>Gold coin</item>
                     <trajectory
-                        startX="0" startY="40"
-                        endX="12" endY="70"
+                        startX="30" startY="0"
+                        endX="22" endY="70"
                         speed="14"
                         type="expert"/>
                 </balloon>
