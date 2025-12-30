@@ -10,6 +10,21 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <!-- Coordinate restrictions -->
+    <xs:simpleType name="xCoordinate">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="80"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="yCoordinate">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="70"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <!-- Root element -->
     <xs:element name="game">
         <xs:complexType>
@@ -37,10 +52,10 @@
 
                                                                 <xs:element name="trajectory">
                                                                     <xs:complexType>
-                                                                        <xs:attribute name="startX" type="xs:float" use="required"/>
-                                                                        <xs:attribute name="startY" type="xs:float" use="required"/>
-                                                                        <xs:attribute name="endX" type="xs:float" use="required"/>
-                                                                        <xs:attribute name="endY" type="xs:float" use="required"/>
+                                                                        <xs:attribute name="startX" type="xCoordinate" use="required"/>
+                                                                        <xs:attribute name="startY" type="yCoordinate" use="required"/>
+                                                                        <xs:attribute name="endX" type="xCoordinate" use="required"/>
+                                                                        <xs:attribute name="endY" type="yCoordinate" use="required"/>
 
                                                                         <xs:attribute name="speed">
                                                                             <xs:simpleType>

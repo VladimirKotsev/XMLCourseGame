@@ -10,8 +10,8 @@
                 <balloon hitpoints="3">
                     <item>Coin 1</item>
                     <trajectory
-                        startX="0" startY="0"
-                        endX="30" endY="0"
+                        startX="20" startY="30"
+                        endX="60" endY="0"
                         speed="6"
                         type="linear"/>
                 </balloon>
@@ -36,7 +36,7 @@
                     <item>Coin 2</item>
                     <trajectory
                         startX="0" startY="1"
-                        endX="100" endY="3"
+                        endX="80" endY="3"
                         speed="7"
                         type="linear"/>
                 </balloon>
@@ -44,10 +44,19 @@
                 <balloon hitpoints="3">
                     <item>Star</item>
                     <trajectory
-                        startX="2" startY="0"
-                        endX="12" endY="60"
+                        startX="0" startY="40"
+                        endX="12" endY="70"
                         speed="11"
                         type="curved"/>
+                </balloon>
+
+                <balloon hitpoints="3">
+                    <item>Gold coin</item>
+                    <trajectory
+                        startX="0" startY="40"
+                        endX="12" endY="70"
+                        speed="14"
+                        type="expert"/>
                 </balloon>
 
             </balloons>
@@ -60,8 +69,8 @@
                 <balloon hitpoints="2">
                     <item>Coin 3</item>
                     <trajectory
-                        startX="0" startY="3"
-                        endX="50" endY="50"
+                        startX="0" startY="0"
+                        endX="80" endY="70"
                         speed="8"
                         type="linear"/>
                 </balloon>
@@ -70,7 +79,7 @@
                     <item>Gem 3</item>
                     <trajectory
                         startX="2" startY="2"
-                        endX="90" endY="8"
+                        endX="40" endY="8"
                         speed="12"
                         type="curved"/>
                 </balloon>
