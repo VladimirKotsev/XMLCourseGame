@@ -7,4 +7,5 @@ public enum UIState
     Zoom = 4,
     Inventory = 5,
     GameOver = 6,
+    StartMenu = 7,
 }

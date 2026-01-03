@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        this.State = UIState.Crosshair;
+        this.State = UIState.StartMenu;
     }
 
     private void UpdateUI()

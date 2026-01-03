@@ -1,13 +1,16 @@
 using System;
 using System.IO;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private int currentLevel = 1;
     private UIManager uiManager;
+    private InventoryToggle inventoryToggle;
     private ScoreManager scoreManager;
 
     public GameData gameData;
@@ -18,14 +21,17 @@ public class GameManager : MonoBehaviour
     public GameObject linearBalloonPrefab;
     public GameObject curvedBalloonPrefab;
     public GameObject expertBalloonPrefab;
+    public TMP_InputField nameInputField;
 
     void Start()
     {
         this.uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         this.scoreManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<ScoreManager>();
+        this.inventoryToggle = GameObject.FindGameObjectWithTag("UIManager").GetComponent<InventoryToggle>();
         this.LoadXml();
         this.LoadCurrentLevel();
         this.scoreManager.UpdateLevel(this.currentLevel, this.gameData.Levels.LevelList.Count());
+        this.inventoryToggle.ToggleInventory();
     }
 
     public Level CurrentGameLevel => this.gameData.Levels.LevelList.Where(level => level.Id == currentLevel).FirstOrDefault();
@@ -47,6 +53,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         this.uiManager.State = UIState.GameOver;
+        this.inventoryToggle!.ToggleInventory();
         Time.timeScale = 0f;
     }
 
@@ -112,6 +119,21 @@ public class GameManager : MonoBehaviour
         {
             this.NextLevel();
         }
+    }
+
+    public void StartGame() 
+    {
+        this.uiManager.State = UIState.Crosshair;
+        this.inventoryToggle.ToggleInventory();
+        string playerName = nameInputField.text;
+        // TODO: Same name 
+    }
+
+    public void ReloadGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        // TODO: Serialize game
     }
 
     private void LoadXml() 

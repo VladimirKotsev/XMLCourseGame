@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 
     private UIManager uiManager;
     private InventoryManager inventoryManager;
+    private InventoryToggle inventoryToggle;
     private bool isInventoryOpen = false;
 
     public GameObject[] itemsContainers;
@@ -16,6 +17,7 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        inventoryToggle = GameObject.FindGameObjectWithTag("UIManager").GetComponent<InventoryToggle>();
         inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
     }
 
@@ -28,12 +30,14 @@ public class InventoryUI : MonoBehaviour
                 uiManager.State = UIState.Crosshair;
                 this.isInventoryOpen = false;
                 this.ClearItems();
+                this.inventoryToggle.ToggleInventory();
             }
             else
             {
                 uiManager.State = UIState.Inventory;
                 this.isInventoryOpen = true;
                 this.RenderItems();
+                this.inventoryToggle.ToggleInventory();
             }
         }
     }
