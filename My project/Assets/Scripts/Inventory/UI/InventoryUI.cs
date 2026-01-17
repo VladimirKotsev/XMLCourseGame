@@ -1,5 +1,5 @@
+using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     private bool isInventoryOpen = false;
 
     public GameObject[] itemsContainers;
-    public GameObject itemPrefab;
+    public GameObject itemPrefab;   
     public GameObject uiItemElement;
 
     void Start()
@@ -73,6 +73,7 @@ public class InventoryUI : MonoBehaviour
                 {
                     itemUI.Name = items.ToArray()[i].Name;
                     itemUI.Description = items.ToArray()[i].Description;
+                    itemUI.IconName = items.ToArray()[i].Icon;
                 }
             }
         }
@@ -89,8 +90,16 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void ShowItem() 
+    public void ShowItem(InventoryItem inventoryItem) 
     {
+        var item = uiItemElement.GetComponent<UIItem>();
+        if (item != null) 
+        {
+            item.Name = inventoryItem.Name;
+            item.Description = inventoryItem.Description;
+            item.IconName = inventoryItem.Icon;
+            item.UpdateMetaData();
+        }
         this.uiItemElement.SetActive(true);
     }
 

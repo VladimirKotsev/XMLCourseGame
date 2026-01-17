@@ -54,7 +54,7 @@ public class RewardColllision : MonoBehaviour
                 this.UpdateItems();
                 if (!this.isTaken) 
                 {
-                    this.inventoryUI.ShowItem();
+                    this.inventoryUI.ShowItem(this.item);
                 }
             }
             else if (uiManager.State == UIState.Interacting && Input.GetKeyDown(KeyCode.E))
@@ -62,7 +62,7 @@ public class RewardColllision : MonoBehaviour
                 if (isTaken)
                 {
                     this.inventoryManager.RemoveItem(this.item.Name);
-                    this.inventoryUI.ShowItem();
+                    this.inventoryUI.ShowItem(this.item);
                     isTaken = false;
                 }
                 else 

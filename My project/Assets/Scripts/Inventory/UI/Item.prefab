@@ -508,6 +508,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIItem
   Name: 
   Description: 
+  IconName: 
   NameText: {fileID: 5437135257276045494}
+  IconImage: {fileID: 151979462577424842}
+  DefaultIcon: {fileID: 21300000, guid: 5ad5cc97945f3f04fb11646aad691a7f, type: 3}
   Tooltip: {fileID: 5249051729974319175}
   TooltipText: {fileID: 717577324486724126}

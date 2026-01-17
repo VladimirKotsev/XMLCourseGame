@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         var target = instance.GetComponent<Target>();
         target.Health = balloon.Hitpoints;
-        target.Item = new InventoryItem { Name = balloon.Item, Description = balloon.Description };
+        target.Item = new InventoryItem { Name = balloon.Item, Description = balloon.Description, Icon = balloon.Icon };
     }
 
     public void CheckForLevelCompletion(int currentBalloonCount) 
