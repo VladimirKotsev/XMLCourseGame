@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -71,6 +72,7 @@ public class InventoryUI : MonoBehaviour
                 if (itemUI != null)
                 {
                     itemUI.Name = items.ToArray()[i].Name;
+                    itemUI.Description = items.ToArray()[i].Description;
                 }
             }
         }

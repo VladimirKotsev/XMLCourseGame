@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -8,10 +9,20 @@ public class Target : MonoBehaviour
     public AudioSource DestoySound;
     public GameObject FallObject;
     public InventoryItem Item;
+    public GameObject HealthText;
+
+    private TextMeshPro text;
+
+    private void Start()
+    {
+        text = HealthText.GetComponent<TextMeshPro>();
+        text.text = Health.ToString();
+    }
 
     public void OnHit()
     {
         Health--;
+        text.text = Health.ToString();
 
         Debug.Log($"{gameObject.name} hit! Remaining health: {Health}");
 

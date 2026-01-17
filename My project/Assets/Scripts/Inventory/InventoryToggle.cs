@@ -4,6 +4,7 @@ public class InventoryToggle : MonoBehaviour
 {
     private MouseMovement playerCameraScript;
     private ShootingScript shootingScript;
+
     private void Start()
     {
         playerCameraScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseMovement>();

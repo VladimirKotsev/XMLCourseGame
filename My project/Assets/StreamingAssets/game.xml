@@ -9,6 +9,7 @@
 
                 <balloon hitpoints="3">
                     <item>Coin 1</item>
+                    <description>Coin 1 description</description>
                     <trajectory
                         startX="20" startY="30"
                         endX="60" endY="0"
@@ -18,6 +19,7 @@
 
                 <balloon hitpoints="2">
                     <item>Gem 1</item>
+                    <description>Gem 1 description</description>
                     <trajectory
                         startX="1" startY="2"
                         endX="50" endY="50"
@@ -34,6 +36,7 @@
 
                 <balloon hitpoints="1">
                     <item>Coin 2</item>
+                    <description>Coin 2 description</description>
                     <trajectory
                         startX="0" startY="1"
                         endX="80" endY="3"
@@ -43,6 +46,7 @@
 
                 <balloon hitpoints="3">
                     <item>Star</item>
+                    <description>Star 2 description</description>
                     <trajectory
                         startX="0" startY="40"
                         endX="12" endY="70"
@@ -52,6 +56,7 @@
 
                 <balloon hitpoints="3">
                     <item>Gold coin</item>
+                    <description>Gold coin description</description>
                     <trajectory
                         startX="30" startY="0"
                         endX="22" endY="70"
@@ -68,6 +73,7 @@
 
                 <balloon hitpoints="2">
                     <item>Coin 3</item>
+                    <description>Coin 3 description</description>
                     <trajectory
                         startX="0" startY="0"
                         endX="80" endY="70"
@@ -77,6 +83,7 @@
 
                 <balloon hitpoints="3">
                     <item>Gem 3</item>
+                   <description>Gem 3 description</description>
                     <trajectory
                         startX="2" startY="2"
                         endX="40" endY="8"

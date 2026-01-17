@@ -8,6 +8,9 @@ public class Balloon
     [XmlElement("item")]
     public string Item { get; set; }
 
+    [XmlElement("description")]
+    public string Description { get; set; }
+
     [XmlElement("trajectory")]
     public Trajectory Trajectory { get; set; }
 }

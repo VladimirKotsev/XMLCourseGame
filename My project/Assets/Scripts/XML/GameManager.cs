@@ -1,8 +1,7 @@
-using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +31,8 @@ public class GameManager : MonoBehaviour
         this.LoadCurrentLevel();
         this.scoreManager.UpdateLevel(this.currentLevel, this.gameData.Levels.LevelList.Count());
         this.inventoryToggle.ToggleInventory();
+
+        StartCoroutine(FocusInput(this.nameInputField));
     }
 
     public Level CurrentGameLevel => this.gameData.Levels.LevelList.Where(level => level.Id == currentLevel).FirstOrDefault();
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         var target = instance.GetComponent<Target>();
         target.Health = balloon.Hitpoints;
-        target.Item = new InventoryItem { Name = balloon.Item };
+        target.Item = new InventoryItem { Name = balloon.Item, Description = balloon.Description };
     }
 
     public void CheckForLevelCompletion(int currentBalloonCount) 
@@ -149,5 +150,12 @@ public class GameManager : MonoBehaviour
 
         this.gameData = XmlLoader.LoadGame(xmlPath);
         Debug.Log("Game loaded successfully!");
+    }
+
+    private IEnumerator FocusInput(TMP_InputField inputField)
+    {
+        yield return null;
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 }

@@ -50,6 +50,8 @@
 
                                                                 <xs:element name="item" type="xs:string"/>
 
+                                                                <xs:element name="description" type="xs:string"/>
+
                                                                 <xs:element name="trajectory">
                                                                     <xs:complexType>
                                                                         <xs:attribute name="startX" type="xCoordinate" use="required"/>
