@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     private InventoryToggle inventoryToggle;
     private ScoreManager scoreManager;
+    private string playerName = "";
 
     public GameData gameData;
 
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("New level");
         if (this.gameData.Levels.LevelList.Count == this.currentLevel)
         {
             this.GameOver();
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         this.uiManager.State = UIState.GameOver;
         this.inventoryToggle!.ToggleInventory();
+        ScoreFileManager.SaveResult(this.playerName, scoreManager.getCurrentScore(), this.currentLevel);
         Time.timeScale = 0f;
     }
 
@@ -126,15 +127,13 @@ public class GameManager : MonoBehaviour
     {
         this.uiManager.State = UIState.Crosshair;
         this.inventoryToggle.ToggleInventory();
-        string playerName = nameInputField.text;
-        // TODO: Same name 
+        this.playerName = nameInputField.text;
     }
 
     public void ReloadGame() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
-        // TODO: Serialize game
     }
 
     private void LoadXml() 

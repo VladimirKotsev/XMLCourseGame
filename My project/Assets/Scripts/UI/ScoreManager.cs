@@ -34,4 +34,9 @@ public class ScoreManager : MonoBehaviour
             scoreText.text = "Score: " + currentScore.ToString();
         }
     }
+
+    public int getCurrentScore()
+    {
+        return currentScore;
+    }
 }
