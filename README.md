@@ -27,7 +27,7 @@ Precision is key. Your accuracy score is saved locally upon game completion.
 ## 📦 Systems & Architecture
 
 ## 1. Data-Driven Levels (XML)
-The game utilizes an external XML parsing system to load level configurations. This allows for easy modification of level difficulty without recompiling the code.
+The game utilizes an external XML parsing and XSD validation to load level configurations. This allows for easy modification of level difficulty without recompiling the code.
 
 ```xml
 <Level id="1">
@@ -47,7 +47,7 @@ The game utilizes an external XML parsing system to load level configurations. T
 ## 2. Inventory & Metadata
 The inventory system is designed to handle metadata logic rather than complex visual interactions.
 * **Static Representation:** Items are represented as static sprites within the inventory UI.
-* **Data Layer:** Despite the visual simplicity, every item object holds specific description loaded from the source files.
+* **Data Layer:** Despite the visual simplicity, every item object holds specific description loaded from the source files. The item description is displayed as a tooltip on mouse hover.
 * **Progression:** The game loop checks the player's inventory against the level requirements. You only proceed to the next level once all required game objects are collected.
 
 ## 🕹️ Controls
@@ -69,8 +69,11 @@ The inventory system is designed to handle metadata logic rather than complex vi
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/yourusername/skyward-artifacts.git](https://github.com/yourusername/skyward-artifacts.git)
+2. **Modify the game.xml file as desired.**
+2. **Play in the Unity editor or build the game.**
 
 ## 📝 Credits
-* **Developer:** Radin Tiholov, Vladimir Kotsev
+* **Developers:** Radin Tiholov, Vladimir Kotsev
 * **Course:** Xml @ FMI Sofia University
-* **Engine:** Unity 3D
+* **Engine:** Unity 3D (6000.2.10f1)
+* **Technology** C#
