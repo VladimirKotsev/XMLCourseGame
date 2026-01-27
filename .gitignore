@@ -54,3 +54,6 @@ Thumbs.db
 Packages/com.unity.*
 Packages/packages-lock.json
 *.unitypackage
+
+# Ignore the score save file
+GameResults.txt
