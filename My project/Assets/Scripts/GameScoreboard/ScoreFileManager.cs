@@ -7,7 +7,7 @@ public static class ScoreFileManager
 
     public static void SaveResult(string playerName, int score, int level)
     {
-        string lineToWrite = $"-- {playerName} - score: {score}, level: {level} \n";
+        string lineToWrite = $"Name {playerName}\nScore: {score}\n --------------------------------------- ";
 
         string filePath = Path.Combine(Application.dataPath, fileName);
 
