@@ -58,6 +58,7 @@ The inventory system is designed to handle metadata logic rather than complex vi
 | **Space** | Jump |
 | **Mouse** | Look / Aim |
 | **Left Mouse Click** | Shoot |
+| **Right Mouse Click** | Sniper scope |
 | **1 / 2 / 3** | Switch Weapons |
 | **E** | Interact (Open Crate / Pick up Item) |
 | **Tab** | Toggle Inventory |
