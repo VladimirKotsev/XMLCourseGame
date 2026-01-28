@@ -7,7 +7,8 @@ public static class ScoreFileManager
 
     public static void SaveResult(string playerName, int score, int level)
     {
-        string lineToWrite = $"Name {playerName}\nScore: {score}\n --------------------------------------- ";
+        string currentDate = System.DateTime.Now.ToString("dd.MM.yyyy | HH:mm");
+        string lineToWrite = $"{currentDate}\nPlayer Name: {playerName}\nScore: {score}\n --------------------------------------- ";
 
         string filePath = Path.Combine(Application.streamingAssetsPath, "GameResults.txt");
 
