@@ -13096,8 +13096,19 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Other
       objectReference: {fileID: 0}
+    - target: {fileID: 9193570988490357087, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193570988490357087, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.63
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3630072139639507529, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
+    - {fileID: 1101894680253063728, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
+    - {fileID: 3242374359156670721, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1245665761895933504, guid: 9d61d1508aaf6ab4194f9f587fe9fbb0, type: 3}
       insertIndex: -1
