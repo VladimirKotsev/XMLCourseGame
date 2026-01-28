@@ -9,7 +9,7 @@ public static class ScoreFileManager
     {
         string lineToWrite = $"Name {playerName}\nScore: {score}\n --------------------------------------- ";
 
-        string filePath = Path.Combine(Application.dataPath, fileName);
+        string filePath = Path.Combine(Application.streamingAssetsPath, "GameResults.txt");
 
         try
         {
