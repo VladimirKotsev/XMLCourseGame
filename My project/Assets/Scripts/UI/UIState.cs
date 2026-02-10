@@ -8,4 +8,5 @@ public enum UIState
     Inventory = 5,
     GameOver = 6,
     StartMenu = 7,
+    Help = 8
 }
