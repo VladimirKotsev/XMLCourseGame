@@ -70,7 +70,7 @@ The inventory system is designed to handle metadata logic rather than complex vi
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/skyward-artifacts.git](https://github.com/yourusername/skyward-artifacts.git)
+   git clone https://github.com/VladimirKotsev/XMLCourseGame
 2. **Modify the game.xml file as desired.**
 2. **Play in the Unity editor or build the game.**
 
