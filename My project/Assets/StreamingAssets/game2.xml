@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game>
+
+    <levels>
+
+        <!-- LEVEL 1 -->
+        <level id="1">
+            <balloons>
+
+                <balloon hitpoints="1">
+                    <item>Silver Coin</item>
+                    <description>Basic silver coin reward</description>
+                    <icon>Coin</icon>
+                    <trajectory
+                        startX="5" startY="10"
+                        endX="70" endY="10"
+                        speed="5"
+                        type="linear"/>
+                </balloon>
+
+                <balloon hitpoints="2">
+                    <item>Green Gem</item>
+                    <description>Small green gem bonus</description>
+                    <icon>Gem</icon>
+                    <trajectory
+                        startX="10" startY="0"
+                        endX="60" endY="60"
+                        speed="7"
+                        type="curved"/>
+                </balloon>
+
+            </balloons>
+        </level>
+
+        <!-- LEVEL 2 -->
+        <level id="2">
+            <balloons>
+
+                <balloon hitpoints="2">
+                    <item>Bronze Star</item>
+                    <description>Bronze tier collectible star</description>
+                    <icon>Star</icon>
+                    <trajectory
+                        startX="0" startY="20"
+                        endX="80" endY="20"
+                        speed="8"
+                        type="linear"/>
+                </balloon>
+
+                <balloon hitpoints="3">
+                    <item>Blue Gem</item>
+                    <description>Medium value blue gem</description>
+                    <icon>Gem</icon>
+                    <trajectory
+                        startX="15" startY="5"
+                        endX="40" endY="70"
+                        speed="10"
+                        type="curved"/>
+                </balloon>
+
+                <balloon hitpoints="1">
+                    <item>Speed Coin</item>
+                    <description>Fast moving bonus coin</description>
+                    <icon>Coin</icon>
+                    <trajectory
+                        startX="80" startY="0"
+                        endX="0" endY="70"
+                        speed="12"
+                        type="expert"/>
+                </balloon>
+
+            </balloons>
+        </level>
+
+        <!-- LEVEL 3 -->
+        <level id="3">
+            <balloons>
+
+                <balloon hitpoints="3">
+                    <item>Golden Star</item>
+                    <description>High value golden star</description>
+                    <icon>Star</icon>
+                    <trajectory
+                        startX="20" startY="0"
+                        endX="20" endY="70"
+                        speed="9"
+                        type="linear"/>
+                </balloon>
+
+                <balloon hitpoints="2">
+                    <item>Purple Gem</item>
+                    <description>Rare purple gem reward</description>
+                    <icon>Gem</icon>
+                    <trajectory
+                        startX="5" startY="65"
+                        endX="75" endY="5"
+                        speed="11"
+                        type="curved"/>
+                </balloon>
+
+                <balloon hitpoints="3">
+                    <item>Elite Coin</item>
+                    <description>Expert level coin challenge</description>
+                    <icon>Coin</icon>
+                    <trajectory
+                        startX="0" startY="35"
+                        endX="80" endY="35"
+                        speed="14"
+                        type="expert"/>
+                </balloon>
+
+            </balloons>
+        </level>
+
+        <!-- LEVEL 4 -->
+        <level id="4">
+            <balloons>
+
+                <balloon hitpoints="2">
+                    <item>Crystal Shard</item>
+                    <description>Shiny crystal fragment</description>
+                    <icon>Gem</icon>
+                    <trajectory
+                        startX="30" startY="0"
+                        endX="70" endY="50"
+                        speed="10"
+                        type="curved"/>
+                </balloon>
+
+                <balloon hitpoints="1">
+                    <item>Quick Star</item>
+                    <description>Fast but fragile star</description>
+                    <icon>Star</icon>
+                    <trajectory
+                        startX="0" startY="60"
+                        endX="80" endY="0"
+                        speed="13"
+                        type="linear"/>
+                </balloon>
+
+                <balloon hitpoints="3">
+                    <item>Master Coin</item>
+                    <description>Hard expert trajectory coin</description>
+                    <icon>Coin</icon>
+                    <trajectory
+                        startX="10" startY="10"
+                        endX="70" endY="65"
+                        speed="14"
+                        type="expert"/>
+                </balloon>
+
+            </balloons>
+        </level>
+
+    </levels>
+
+</game>
